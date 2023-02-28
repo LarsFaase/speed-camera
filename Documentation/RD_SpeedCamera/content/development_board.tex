@@ -1,0 +1,11 @@
+\chapter{\REVIEW{Development Board}}
+\label{chap:development-board}
+
+The main component of the speed camera is the SoC (system on a chip). 
+\cref{app:board-comparison} shows the differences between the RPI 4 (Raspberry Pi 4) and Jetson Nano Developer Kit.
+To summarize this, these SoCs are not very different in term of CPU and memory, but the GPU of the Jetson Nano is clearly more powerful than the GPU of the RPI 4.
+
+\section{Recommendation}
+
+As this is going to be a GPU-intensive project because the ALPR and speed measurements need to be done with computer vision, it is recommended to use a Jetson Nano.
+The only downside for this is that it will require an external router or WLAN dongle, since the Jetson Nano does not have WLAN built-in (see \cref{sec:board-comparison-interfaces}).
