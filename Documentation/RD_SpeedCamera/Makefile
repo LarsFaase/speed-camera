@@ -1,23 +1,17 @@
 PROJNAME=RD_SpeedCamera
 
-ifdef OS
-    RMDIR = rmdir /s /q
-else
-    RMDIR = rm -rf
-endif
-
 .PHONY: $(PROJNAME).pdf all clean
 
 all: $(PROJNAME).pdf
 
 $(PROJNAME).pdf: $(PROJNAME).tex
-	-mkdir out
+	mkdir -p out
 	latexmk -pdflatex=lualatex -pdf -output-directory=out $<
 	cp out/$(PROJNAME).pdf ../$(PROJNAME).pdf
 
 cleanall:
-	latexmk -pdflatex=lualatex -pdf -C -output-directory=out
-	$(RMDIR) out
+	rm -rf out
+	rm -f ../$(PROJNAME).pdf
 
 clean:
 	latexmk -pdflatex=lualatex -pdf -c -output-directory=out

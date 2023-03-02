@@ -1,3 +1,2 @@
-Documentation/latex-template
-Documentation/RD_SpeedCamera/out
+Documentation/*/out
 Documentation/*.pdf
