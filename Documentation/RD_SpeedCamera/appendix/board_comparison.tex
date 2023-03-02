@@ -1,0 +1,39 @@
+\chapter{\REVIEW{Development Board Comparison}}
+\label{app:board-comparison}
+
+\section{Hardware}
+
+\cref{tbl:board-comparison} shows the differences in hardware between the Jetsen Nano Developer Kit and the Raspberry Pi 4.
+These board have many similarities in hardware. They are both equipped with an ARM CPU (Central Processing Unit) and 4 GB of LPDDR4 (Low-Power Double Data Rate) memory.
+The biggest difference between these board is that the RPI 4 has an Broadcom VideoCore VI, and the Jetson Nano has a much more powerful 128-core Maxwell GPU (Graphics Processing Unit).
+
+\begin{lintable}{tbl:board-comparison}{Board Hardware Comparison}
+    \begin{lintabular}{l|l|l}
+        \lintablehead{       & Jetson Nano Developer Kit    & Raspberry Pi 4}
+        \lintablerow{CPU     & Quad-core ARM A57 @ 1.43 GHz & Quad-core ARM Cortex-A72 @ 1.5 GHz}
+        \lintablerow{Memory  & 4 GB 64-bit LPDDR4 25.6 GB/s & 4 GB LPDDR4-3200}
+        \lintablerow{GPU     & 128-core Maxwell             & Broadcom VideoCore VI}
+        \lintablerow{Camera  & 2x MIPI CSI-2 DPHY lanes     & 2-lane MIPI CSI camera port}
+    \end{lintabular}
+\end{lintable}
+
+The data in this table is retrieved from \cite{nvidia:jetson-nano-datasheet} and \cite{rpiltd:raspberry-pi-datasheet}.
+
+\cref{tbl:gpu-comparison} displays the difference between the GPUs.
+You can see that the Maxwell GPU has around 8 times better performance then the VideoCore VI.
+
+\begin{lintable}{tbl:gpu-comparison}{GPU Comparison}
+    \begin{lintabular}{l|l|l}
+        \lintablehead{                   & 128-core Maxwell & Broadcom VideoCore VI}
+        \lintablerow{Performance (GLOPS) & 512              & 64}
+        \lintablerow{Clock speed (MHZ)   & 921              & 500}
+    \end{lintabular}
+\end{lintable}
+
+The data in this table is retrieved from \cite{nvidia:jetson-nano-datasheet} and \cite{gdgtvs:videocore-vi-benchmark}.
+
+\section{Interfaces}
+\label{sec:board-comparison-interfaces}
+
+As shown in \cref{tbl:board-comparison}, both devices support MIPI CSI-2 (Camera Serial Interface).
+Both device also have a Gigabit Ethernet port. However, the RPI 4 also has 802.11 b/g/n/ac Wireless LAN and the Jetson Nano does not.

@@ -1,0 +1,53 @@
+\documentclass{lintelo/lintelo}
+\usepackage{placeins}
+
+\addbibresource{references.bib}
+
+\title{Project Speed Camera}
+\author{Thomas in 't Anker, Lars Faase, Niek Kuipers, Max te Lintelo}
+\releasedate{\lindate\today}
+\documentstatus{Concept}
+\documenttype{Research Document}
+\documenttypeabbreviation{RD}
+
+\begin{document}
+
+\maketitle
+
+\begin{lindocumenthistory}
+    \lindocumenthistoryrow{\TODO{2023-03-03}}{Concept}{Initial version.}
+\end{lindocumenthistory}
+
+\begin{lindistributionlist}{R01}
+    \lintablerow{Thomas in 't Anker & Author   & x }
+    \lintablerow{Lars Faase         & Author   & x }
+    \lintablerow{Niek Kuipers       & Author   & x }
+    \lintablerow{Max te Lintelo     & Author   & x }
+    \lintablerow{Jonathan Overes    & Reviewer &   }
+    \lintablerow{Joan Schrasser     & Client   &   }
+\end{lindistributionlist}
+
+\begin{linissues}
+    \linissue{\TODO{1.}}{\cref{chap:development-board}}{DONE: \st{Complete research for development board.}}{Max te Lintelo}{2023-03-03}
+    \linissue{\TODO{2.}}{\cref{chap:camera}}{Add camera research.}{Lars Faase}{2023-03-03}
+    \linissue{\TODO{3.}}{\cref{chap:license-plate-recognition}}{Add ALPR research.}{Niek Kuipers}{2023-03-03}
+    \linissue{\TODO{4.}}{\cref{chap:speed-detection}}{Add speed detection research.}{Thomas in 't Anker}{2023-03-03}
+\end{linissues}
+
+\lintableofcontents
+\linlistoffigures
+\linlistoftables
+%\linlistoflistings
+
+\linreferences
+
+\input{content/introduction}
+\input{content/development_board}
+\input{content/camera}
+\input{content/license_plate_recognition}
+\input{content/speed_detection}
+
+\linappendix
+\input{appendix/board_comparison}
+
+\end{document}
