@@ -1,0 +1,55 @@
+\chapter{\REVIEW{Functional Overview}}
+\label{chap:functional-overview}
+
+This chapter provides an overview of the functional requirements for the hidden speed camera.
+The system consists of a SoC (system on a chip) and a camera.
+It detects the speed of vehicles by making use of the camera footage, and then uses ALPR (Automatic License Plate Recognition) to get the license plate.
+Both the speed detection and ALPR will be done by making use of computer vision.
+
+\section{General}
+
+\begin{itemize}
+    \item {[FUN\_GEN\_001]}: The system fits in a garbage bin.
+    \item {[FUN\_GEN\_002]}: The system boots up autonomously and is operational within 30 seconds.
+    \item {[FUN\_GEN\_003]}: The system detects vehicles in both directions. (Could have)
+\end{itemize}
+
+\subsection{System on a chip}
+
+\begin{itemize}
+    \item {[FUN\_SOC\_001]}: The system locally stores pictures of the vehicles of speeding road users.
+    \item {[FUN\_SOC\_002]}: The system locally stores pictures of the license plates of speeding road users.
+    \item {[FUN\_SOC\_003]}: The system keeps all pictures for a minimum of 30 days.
+\end{itemize}
+
+\subsection{License Plate Recognition}
+
+\begin{itemize}
+    \item {[FUN\_LPR\_001]}: The system recognizes Dutch and Belgian license plates under the following conditions:
+    \begin{itemize}
+        \label{iss:lighting}
+        \item Unobscured image of the entire license plate
+        \item Good lighting conditions
+    \end{itemize}
+\end{itemize}
+
+\subsection{Speed Detection}
+
+\begin{itemize}
+    \item {[FUN\_SPE\_001]}: The system measures vehicle speeds with a maximum deviation of 10\% or 5 km/h.
+\end{itemize}
+
+\section{Interfaces}
+
+\subsection{WiFi}
+
+The user can configure the speed camera and access its files by connecting to its WiFi network.
+
+\begin{itemize}
+    \item {[FUN\_WIF\_001]}: The system create a WiFi accesspoint to which the client can connect.
+    \item {[FUN\_WIF\_001]}: The system hosts a HTTP web server through which the user can download footage and configure the speed camera.
+\end{itemize}
+
+\subsection{Camera}
+
+The camera interface will be determined after the research is completed.

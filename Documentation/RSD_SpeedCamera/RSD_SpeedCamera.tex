@@ -1,0 +1,47 @@
+\documentclass{lintelo/lintelo}
+\usepackage{placeins}
+
+\addbibresource{../Shared/references.bib}
+
+\title{Project Speed Camera}
+\author{Thomas in 't Anker, Lars Faase, Niek Kuipers, Max te Lintelo}
+\releasedate{\lindate\today}
+\documentstatus{Concept}
+\documenttype{Requirements Specification Document}
+\documenttypeabbreviation{RSD}
+
+\begin{document}
+
+\maketitle
+
+\begin{lindocumenthistory}
+    \lindocumenthistoryrow{\TODO{2023-03-03}}{Concept}{Initial version.}
+\end{lindocumenthistory}
+
+\begin{lindistributionlist}{R01}
+    \lintablerow{Thomas in 't Anker & Author   & x }
+    \lintablerow{Lars Faase         & Author   & x }
+    \lintablerow{Niek Kuipers       & Author   & x }
+    \lintablerow{Max te Lintelo     & Author   & x }
+    \lintablerow{Jonathan Overes    & Reviewer &   }
+    \lintablerow{Joan Schrasser     & Client   &   }
+\end{lindistributionlist}
+
+\begin{linissues}
+    \linissue{1.}{\cref{iss:lighting}}{Define good lighting conditions.}{Max te Lintelo}{2023-03-10}
+\end{linissues}
+
+\lintableofcontents
+\linlistoffigures
+\linlistoftables
+%\linlistoflistings
+
+\linreferences
+
+\input{content/introduction}
+\input{content/functional_overview}
+
+\linappendix
+% \input{appendix/app}
+
+\end{document}
