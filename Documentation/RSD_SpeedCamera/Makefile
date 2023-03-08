@@ -1,4 +1,4 @@
-PROJNAME=RD_SpeedCamera
+PROJNAME=RSD_SpeedCamera
 
 .PHONY: $(PROJNAME).pdf all clean
 
