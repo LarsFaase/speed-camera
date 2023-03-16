@@ -43,7 +43,9 @@ The camera does not have to be in line with the road, due to it being focused on
     speed = distance \div time
 \end{equation}
 
-If the above formula does not work conform the measurement requirements, the following formulas can be used to calculate the average speed of an object:
+\newpage
+
+If the formula 5.1 does not work conform the measurement requirements, the following formulas can be used to calculate the average speed of an object:
 \begin{equation}
     Meters Per Pixel = mmp = Distance Constant \div Frame Width
 \end{equation}
@@ -65,8 +67,6 @@ a possibility for this approach, using OpenCV. See LINK TO LICENCE RECOGNITION f
 A centroid tracker can be used to track the center of an object, and to use this to measure time required to pass through the cameras view. An example 
 of centroid tracking can be seen in figure 1.
 
-\newpage
-
 \begin{figure}[h]
     \caption{Example of how centroid tracking works}
     \centering
@@ -74,8 +74,7 @@ of centroid tracking can be seen in figure 1.
     \label{fig:centroid_example}
 \end{figure}
 
-% If not compile delete reference
-\begin{lintable}{tbl:steps_in_centroid_example}{Steps displayed in centroid example \ref{fig:centroid_example}}
+\begin{lintable}{tbl:steps_in_centroid_example}{Steps displayed in figure \ref{fig:centroid_example}}
     \begin{lintabular}{l|l}
         \lintablehead{Step & Step description}
         \lintablerow{1 & Accept bounding box coordinated and calculate the center of objects. (First frame with existing object)}
