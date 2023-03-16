@@ -11,8 +11,24 @@ and detection. The list below shows some of the basic requirements to ensure acc
     \item Solid frame-rate (basic requirement for accurate calculations), with a minimum of 30 fps.
 \end{itemize}
 
-% \section{Camera-only speed measuring method}
-% TBA/TBD
+\section{Camera-only speed measuring method}
+It is possible to create a system using a multi-camera based solution to measure vehicle speed. This can be achieved using for example two cameras,
+which are positioned to record two sections of the same road. A vehicle is digitally recorded as they pass through a cameras recording area, this data
+is then used to calculate the average speed of the vehicle using the data from both cameras. See figure \ref{fig:two_camera_measurement_overview} for 
+an overview of this possible solution.
+
+\begin{figure}[h]
+    \caption{Overall view of the two-camera based vehicle speed measurement}
+    \centering
+    \includegraphics[width=0.75\textwidth]{Two_camera_measurement_overall_view}
+    \label{fig:two_camera_measurement_overview}
+\end{figure}
+
+As seen in figure \ref{fig:two_camera_measurement_overview} two cameras are used to record a fixed point on the road. These cameras are setup using a
+fixed pole in the road. However, this setup can also be achieved using smaller constructions allowing for a clearer view of a licence plate. Using 
+this setup allows for use of vision-type programming and a more linear way of licence plate recognition. Experiments have also shown that using the 
+setup shown in figure \ref{fig:two_camera_measurement_overview} has a base a maximum speed error of less then 3kmh, meaning it is conform the given
+requirements by the client. 
 
 \section{VASCAR speed measuring method}
 A VASCAR is a device/technique containing a stopwatch and a processor. The VASCAR starts recording time when a vehicle passes a fixed/generated spot 
@@ -58,9 +74,8 @@ of centroid tracking can be seen in figure 1.
     \label{fig:centroid_example}
 \end{figure}
 
-Table \ref{tbl:steps_in_centroid_example} below shows the steps displayed within figure \ref{fig:centroid_example}.
-
-\begin{lintable}{tbl:steps_in_centroid_example}{Steps in centroid example}
+% If not compile delete reference
+\begin{lintable}{tbl:steps_in_centroid_example}{Steps displayed in centroid example \ref{fig:centroid_example}}
     \begin{lintabular}{l|l}
         \lintablehead{Step & Step description}
         \lintablerow{1 & Accept bounding box coordinated and calculate the center of objects. (First frame with existing object)}
