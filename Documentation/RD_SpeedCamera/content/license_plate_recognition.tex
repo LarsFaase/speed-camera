@@ -14,7 +14,7 @@ These models have been selected based on a review of the article \cite{lic:licen
     The location with the highest similarity score is considered the location of the object. 
     It is a simple and versatile technique but may have limitations in complex scenarios such as partial occlusions and complex backgrounds.
 
-    \textbf{Template mathcing works using the following steps:}
+    \textbf{Template matching works uses the following steps:}
         \begin{enumerate}
 
             \item \textbf{Select a template}
@@ -56,7 +56,7 @@ These models have been selected based on a review of the article \cite{lic:licen
         
         \item \textbf{Edge detection}
         
-        The first step in the Hough transform algorithm is to detect the edges in the input image using an edge detection algorithm such as Canny edge detector \cite{canny1986computational}.
+        The first step in the Hough transform algorithm is to detect the edges in the input image using an edge detection algorithm such as Canny edge detector.
         
         \item \textbf{Parameter space}
         
@@ -103,14 +103,28 @@ These models have been selected based on a review of the article \cite{lic:licen
             \item \textbf{Haar Feature Selection}
         
             The first step in the Haar-cascade algorithm is to select a set of features that are used to detect the object. 
-            Haar features are rectangular features that are used to represent the object. In figure 1 there are the Haar features. 
+            Haar features are rectangular features that are used to represent the object. In figure \ref{fig:haar_features_example} is a example of how the haar features look. 
             The algorithm selects the best set of features that can distinguish between the object and the background.
+
+            \begin{linfigure}{fig:haar_features_example}{Example of the haar features}
+                \includegraphics[width=0.5\textwidth]{haar_features_example}
+            \end{linfigure}
                 
             \item \textbf{Integral Image}
         
             The second step is to calculate the integral image of the input image. The integral image is a matrix of the same size as the input image, where each element represents the sum of all the pixels above and to the left of it. 
             The integral image is used to speed up the calculation of the Haar features. 
-            In the figure 2. below is explained how the integral image is being made.
+            The value of a pixel at location $(x,y)$ in the integral image can be defined as the cumulative sum of all the pixels in the rectangular region defined by the upper-left corner at $(0,0)$ and the lower-right corner at $(x,y)$:
+            
+            I(x,y)=∑i=0x∑j=0yP(i,j)
+            I(x,y)=i=0∑x​j=0∑y​P(i,j)
+            
+            where $P(i,j)$ is the value of the pixel at location $(i,j)$. This cumulative sum includes the value of the pixel at $(x,y)$ itself, as well as all the pixels to its left and above it.
+            In figure \ref{fig:}, there is example of how a integral image will look like.
+
+            \begin{linfigure}{fig:integral_image_example}{Example of how intergral images works}
+                \includegraphics[width=0.5\textwidth]{integral_image_example}
+            \end{linfigure}
             
             \item \textbf{Adaboost Training}
         
@@ -187,8 +201,12 @@ These models have been selected based on a review of the article \cite{lic:licen
 
             \item \textbf{Residual blocks}
         
-            The first step is to divide the original image (A) into equal-shaped grid cells of size NxN, where N=4 in this case (as shown in the image bewllow). 
+            The first step is to divide the original image (A) into equal-shaped grid cells of size NxN, where N=4 in this case (as shown in figure \ref{fig:yolo_grid_example} bellow). 
             Each cell in the grid is responsible for localizing and predicting the class of the object that it covers, along with a probability/confidence value.
+
+            \begin{linfigure}{fig:yolo_grid_example}{Example of how to image is split up in grids}
+                \includegraphics[width=0.5\textwidth]{yolo_grid_example}
+            \end{linfigure}
             
             \item \textbf{Bounding box regression}
         
@@ -198,7 +216,6 @@ These models have been selected based on a review of the article \cite{lic:licen
             The values in the \(Y\) vector are crucial during the training phase of the YOLO model.
 
             \begin{itemize}
-
             \item The \(pc\) value represents the probability score of the grid cell containing an object. For example, in an image with several objects, all the grid cells containing an object will have a probability score higher than zero, while the grid cells without an object will have a probability score of zero.
             \item The \(bx\) and \(by\) values represent the x and y coordinates of the center of the bounding box with respect to the enveloping grid cell.
             \item The \(bh\) and \(bw\) values represent the height and width of the bounding box with respect to the enveloping grid cell.
