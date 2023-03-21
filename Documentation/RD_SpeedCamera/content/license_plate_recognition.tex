@@ -9,85 +9,47 @@ These models have been selected based on a review of the article \cite{lic:licen
 
 \section{Image processing}
 
-    \subsection{Template matching}
-    Template matching is a technique used in computer vision for detecting objects in images by comparing a small template image with a larger search image. 
-    The location with the highest similarity score is considered the location of the object. 
-    It is a simple and versatile technique but may have limitations in complex scenarios such as partial occlusions and complex backgrounds.
+    \subsection{Edge detection for license plate recognition}
 
-    \textbf{Template matching works uses the following steps:}
+    Edge detection is a fundamental technique in computer vision used to extract edges from an image. 
+    In license plate recognition, edge detection can be used to extract the boundaries of the license plate, which can then be used for further processing such as character segmentation and recognition.
+
+    There are several edge detection algorithms that can be used for license plate recognition, such as Sobel, Canny, and Roberts. 
+    However, Canny edge detection is the most commonly used algorithm due to its superior performance in detecting edges with low noise sensitivity and high accuracy.
+    \cite{egde:edge-dection}
+
+    \textbf{Canny edge detection works using the following steps:}
+
         \begin{enumerate}
 
-            \item \textbf{Select a template}
+        \item \textbf{Gaussian smoothing}
 
-            The first step is to select a template that represents the object of interest. 
-            The template should be a small patch of the image that contains the object and its surrounding features.
+        The first step is to apply Gaussian smoothing to the image to reduce noise and obtain a smoother image. 
+        This is done by convolving the image with a Gaussian filter kernel.
 
-            \item \textbf{Normalize the template}
+        \item \textbf{Gradient calculation}
 
-            The second step is to normalize the template to have zero mean and unit variance. 
-            This is done to make the template invariant to changes in lighting and contrast.
+        The second step is to calculate the gradient of the smoothed image using a derivative operator such as Sobel or Roberts. 
+        The gradient represents the rate of change of intensity in the image and can be used to detect edges.
 
-            \item \textbf{Sliding window search}
+        \item \textbf{Non-maximum suppression}
 
-            The third step is to slide the template over the image and calculate a similarity measure at each position. 
-            The similarity measure can be calculated using various techniques such as sum of squared differences (SSD), normalized cross correlation (NCC), or correlation coefficient. 
-            The similarity measure should be a metric that is low for dissimilar patches and high for similar patches.
+        The third step is to apply non-maximum suppression to the gradient image to thin out the edges and obtain a one-pixel-wide edge map. 
+        This is done by selecting the local maximum in the direction perpendicular to the edge and setting all other pixels to zero.
 
-            \item \textbf{Thresholding}
+        \item \textbf{Double thresholding}
 
-            The fourth step is to apply a threshold to the similarity measures to identify patches that are similar to the template. 
-            The threshold should be chosen based on the distribution of similarity measures to balance between false positives and false negatives. 
+        The fourth step is to apply double thresholding to the edge map to classify each edge pixel as either strong or weak. 
+        This is done by comparing each pixel intensity with two thresholds: a high threshold and a low threshold. 
+        Pixels with intensity above the high threshold are classified as strong edges, pixels with intensity below the low threshold are classified as non-edges, and pixels with intensity between the two thresholds are classified as weak edges.
 
-            \item \textbf{Non-maximum suppression}
-            
-            The fifth step is to apply non-maximum suppression to the identified patches to remove duplicates. 
-            This is done by selecting the patch with the highest similarity measure and suppressing all other patches that overlap with it.
+        \item \textbf{Edge tracking by hysteresis}
+
+        The fifth and final step is to perform edge tracking by hysteresis to link weak edges into strong edges. 
+        This is done by starting at a strong edge pixel and following the adjacent weak edge pixels until no more weak edges are found. 
+        This process is repeated for all strong edge pixels until all edges are connected.
 
         \end{enumerate}
-
-    \subsection{Hough Transform}
-    The Hough transform is a computer vision algorithm used for detecting shapes in images.  
-    The algorithm works by transforming the image space into a parameter space, where each pixel in the image space corresponds to a curve in the parameter space. 
-    The Hough transform is commonly used for detecting lines and circles in images.
-    
-    \textbf{The Hough transform algorithm works uses the following steps:}
-    
-    \begin{enumerate}
-        
-        \item \textbf{Edge detection}
-        
-        The first step in the Hough transform algorithm is to detect the edges in the input image using an edge detection algorithm such as Canny edge detector.
-        
-        \item \textbf{Parameter space}
-        
-        The second step is to create a parameter space for the detected edges. 
-        The parameter space is a two-dimensional space where each point represents a line in the image space. 
-        The two dimensions of the parameter space correspond to the slope and intercept of the line. For circle detection, the parameter space is three-dimensional and each point corresponds to a circle in the image space, with the three dimensions representing the center coordinates and radius.
-        
-        \item \textbf{Voting}
-        
-        The third step is to vote for the parameters that correspond to the lines or circles in the input image. 
-        For each edge point in the image space, a curve is drawn in the parameter space that corresponds to all possible lines or circles that pass through that point. 
-        The curves in the parameter space are called Hough curves. Each Hough curve votes for the parameters that correspond to the line or circle it represents.
-        
-        \item \textbf{Thresholding}
-        
-        The fourth step is to threshold the parameter space to select the most likely lines or circles in the input image. 
-        The threshold is applied based on the number of votes received by each parameter. 
-        Only the parameters that receive a sufficient number of votes are considered as valid lines or circles in the input image.
-        
-        \item \textbf{Backprojection}
-        
-        The fifth step is to perform backprojection to determine the location of the detected lines or circles in the input image. 
-        Each valid parameter corresponds to a line or circle in the image space. The detected lines or circles are then overlaid on the input image for visualization purposes.
-        
-    \end{enumerate}
-        
-
-    \subsection{Histogram based}
-
-    \subsection{Hybrid approach}
-
 
 \section{Machine learning}
 
@@ -120,7 +82,7 @@ These models have been selected based on a review of the article \cite{lic:licen
             I(x,y)=i=0∑x​j=0∑y​P(i,j)
             
             where $P(i,j)$ is the value of the pixel at location $(i,j)$. This cumulative sum includes the value of the pixel at $(x,y)$ itself, as well as all the pixels to its left and above it.
-            In figure \ref{fig:}, there is example of how a integral image will look like.
+            In figure \ref{fig:integral_image_example}, there is example of how a integral image will look like.
 
             \begin{linfigure}{fig:integral_image_example}{Example of how intergral images works}
                 \includegraphics[width=0.5\textwidth]{integral_image_example}
