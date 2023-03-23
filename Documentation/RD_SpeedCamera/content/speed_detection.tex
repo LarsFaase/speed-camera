@@ -52,7 +52,7 @@ If the formula 5.1 does not work conform the measurement requirements, the follo
     Distance In Meters Zone_{ab} = d_{ab} = p_{ab} \times mmp
 \end{equation}
 \begin{equation}
-    Average Speed = \Delta t_{ab} \div d_{ab}
+    Average Speed = \Delta d_{ab} \div t_{ab}
 \end{equation}
 
 \subsection{Object tracking}
@@ -63,12 +63,9 @@ a possibility for this approach, using OpenCV. See LINK TO LICENCE RECOGNITION f
 A centroid tracker can be used to track the center of an object, and to use this to measure time required to pass through the cameras view. An example 
 of centroid tracking can be seen in figure 1.
 
-\begin{figure}[h]
-    \caption{Example of how centroid tracking works}
-    \centering
+\begin{linfigure}{fig:centroid_example}{Example of how centroid tracking works}
     \includegraphics[width=0.75\textwidth]{Centroid_tracking_example}
-    \label{fig:centroid_example}
-\end{figure}
+\end{linfigure}
 
 \begin{lintable}{tbl:steps_in_centroid_example}{Steps displayed in figure \ref{fig:centroid_example}}
     \begin{lintabular}{l|l}
