@@ -17,7 +17,7 @@ which are positioned to record two sections of the same road. A vehicle is digit
 is then used to calculate the average speed of the vehicle using the data from both cameras. See figure \ref{fig:two_camera_measurement_overview} for 
 an overview of this possible solution.
 
-\begin{linfigure}{fig:two_camera_measurement_overview}{Overall view of the two-camera based vehicle speed measurement}
+\begin{linfigure}{fig:two_camera_measurement_overview}{Overall view of the two-camera based vehicle speed measurement.}
     \includegraphics[width=0.75\textwidth]{Two_camera_measurement_overall_view}
 \end{linfigure}
 
@@ -58,12 +58,12 @@ If the formula 5.1 does not work conform the measurement requirements, the follo
 \subsection{Object tracking}
 The cameras FOV can be used as beginning and end points for speed measurements, meaning you start measuring object as soon as they are visible on the 
 camera. This also allows the device to measure the speed of objects from left-to-right and right-to-left. An object detector and centroid tracker are 
-a possibility for this approach, using OpenCV. See LINK TO LICENCE RECOGNITION for a possible AI or algorithm the realize this.
+a possibility for this approach, using OpenCV. See LINK TO LICENCE RECOGNITION for research about an AI or algorithm to realize this.
 
 A centroid tracker can be used to track the center of an object, and to use this to measure time required to pass through the cameras view. An example 
 of centroid tracking can be seen in figure 1.
 
-\begin{linfigure}{fig:centroid_example}{Example of how centroid tracking works}
+\begin{linfigure}{fig:centroid_example}{Example of how centroid tracking works.}
     \includegraphics[width=0.75\textwidth]{Centroid_tracking_example}
 \end{linfigure}
 
@@ -76,4 +76,15 @@ of centroid tracking can be seen in figure 1.
         \lintablerow{4 & Register new objects and deregister old objects.}
     \end{lintabular}
 \end{lintable}
+
+\section{Speed measurement using licence plate recognition}
+It is possible to use the position of a car's license plate to measure its speed. This requires a very solid license plate detection 
+algorithm, which makes it a bit more difficult to use. However, it is very possible if the license plate detection is very reliable, see
+figure \ref{fig:license_plate_speed_detection} for an example of this speed measurement method. Furthermore, this method of measuring speed
+uses only vision-based image processing, meaning no AI was for this method.
+
+\begin{linfigure}{fig:license_plate_speed_detection}{Overview of the license plate speed measurement method.}
+    \includegraphics[width=0.75\textwidth]{License_plate_speed_measurement_example}
+\end{linfigure}
+
 
